@@ -17,23 +17,24 @@ const Registration = () => {
   } = useForm();
 
   // context for authentication
-  const {createUser} = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
 
   // console.log(context);
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleSignUp = (data) => {
-    const { email, password, username } = data;
+    const { email, password, username, photourl } = data;
 
     console.log(email, password);
-    if(password.length < 6){
-      return toast.error("Password length must be 6 character")
+    if (password.length < 6) {
+      return toast.error("Password length must be 6 character");
     }
     if (/^(?=.*[a-z])(?=.*[A-Z]).+$/.test(password)) {
       return createUser(email, password)
         .then((result) => {
           result.user.displayName = username;
+          result.user.photoURL = photourl;
           toast.success("Successfully Register!");
           navigate(location?.state ? location.state : "/");
         })

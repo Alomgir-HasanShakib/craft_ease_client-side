@@ -7,7 +7,7 @@ import Navbar from "../Components/Nav/Navbar";
 const Root = () => {
   return (
     <div >
-      <div className=" max-w-7xl mx-auto h-[calc(100vh)]">
+      <div className=" max-w-7xl mx-auto min-h-[calc(100vh)]">
       <Navbar></Navbar>
         <Outlet></Outlet>
       </div>

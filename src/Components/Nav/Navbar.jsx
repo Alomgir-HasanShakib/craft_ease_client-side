@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Context/Authentication/Authentication";
+import toast, { Toaster } from "react-hot-toast";
 
 const Navbar = () => {
   const { user, loader, logOut } = useContext(AuthContext);
@@ -8,7 +9,6 @@ const Navbar = () => {
   const handleLogout = () => {
     logOut().then(() => toast.success("Log out successfull "));
   };
-
   const navLink = (
     <>
       <li className="text-[18px] font-semibold">
@@ -86,7 +86,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -129,7 +129,7 @@ const Navbar = () => {
         {loader ? (
           <span className="loading loading-infinity loading-lg"></span>
         ) : (
-          !user ? (
+          !user && (
             <div className="navbar-end">
               <Link to="/login">
                 <button className="btn mr-5 bg-btn text-white font-bold hidden lg:flex">
@@ -142,12 +142,25 @@ const Navbar = () => {
                 </button>
               </Link>
             </div>
-          ): <div className="navbar-end">
-          <button onClick={handleLogout} className="btn bg-btn text-white font-bold">Log Out</button>
-        </div>
+          )
         )}
-        
+        {user && (
+          <div className="navbar-end">
+            <div className="avatar">
+              <button className="w-10 mr-2 tooltip rounded-full ring ring-primary ring-offset-base-100 ring-offset-2" data-tip={user.displayName}>
+                <img className="rounded-full ring" src={user.photoURL}  />
+              </button>
+            </div>
+            <button
+              onClick={handleLogout}
+              className="btn bg-btn text-white font-bold"
+            >
+              Log Out
+            </button>
+          </div>
+        )}
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };
