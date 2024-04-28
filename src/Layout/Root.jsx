@@ -6,12 +6,12 @@ import Navbar from "../Components/Nav/Navbar";
 
 const Root = () => {
   return (
-    <div>
-      <div className=" max-w-7xl mx-auto">
+    <div >
+      <div className=" max-w-7xl mx-auto h-[calc(100vh)]">
       <Navbar></Navbar>
         <Outlet></Outlet>
       </div>
-      <div className="h-100vh">
+      <div className="mt-16">
 
       <Footer></Footer>
       </div>

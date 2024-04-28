@@ -1,6 +1,14 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Context/Authentication/Authentication";
 
 const Navbar = () => {
+  const { user, loader, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut().then(() => toast.success("Log out successfull "));
+  };
+
   const navLink = (
     <>
       <li className="text-[18px] font-semibold">
@@ -36,39 +44,43 @@ const Navbar = () => {
         </NavLink>
       </li>
 
-      <li className="text-[18px] font-semibold">
-        <NavLink
-          to="/addcraft"
-          style={({ isActive, isPending, isTransitioning }) => {
-            return {
-              fontWeight: isActive ? "bold" : "",
-              color: isActive ? "#135D66" : "black",
-              background: isActive ? "transparent" : "",
-              border: isActive ? "1px solid #135D66" : "",
-              viewTransitionName: isTransitioning ? "slide" : "",
-            };
-          }}
-        >
-          Add Craft Item
-        </NavLink>
-      </li>
+      {user && (
+        <ul className="flex">
+          <li className="text-[18px] font-semibold">
+            <NavLink
+              to="/addcraft"
+              style={({ isActive, isPending, isTransitioning }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isActive ? "#135D66" : "black",
+                  background: isActive ? "transparent" : "",
+                  border: isActive ? "1px solid #135D66" : "",
+                  viewTransitionName: isTransitioning ? "slide" : "",
+                };
+              }}
+            >
+              Add Craft Item
+            </NavLink>
+          </li>
 
-      <li className="text-[18px] font-semibold">
-        <NavLink
-          to="/mycraftlist"
-          style={({ isActive, isPending, isTransitioning }) => {
-            return {
-              fontWeight: isActive ? "bold" : "",
-              color: isActive ? "#135D66" : "black",
-              background: isActive ? "transparent" : "",
-              border: isActive ? "1px solid #135D66" : "",
-              viewTransitionName: isTransitioning ? "slide" : "",
-            };
-          }}
-        >
-          My Art&Craft List
-        </NavLink>
-      </li>
+          <li className="text-[18px] font-semibold">
+            <NavLink
+              to="/mycraftlist"
+              style={({ isActive, isPending, isTransitioning }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isActive ? "#135D66" : "black",
+                  background: isActive ? "transparent" : "",
+                  border: isActive ? "1px solid #135D66" : "",
+                  viewTransitionName: isTransitioning ? "slide" : "",
+                };
+              }}
+            >
+              My Art&Craft List
+            </NavLink>
+          </li>
+        </ul>
+      )}
     </>
   );
 
@@ -99,8 +111,10 @@ const Navbar = () => {
             >
               {navLink}
               <Link to="/login">
-            <a className="btn mr-5 bg-btn text-white font-bold ">Log In</a>
-          </Link>
+                <button className="btn mr-5 bg-btn text-white font-bold ">
+                  Log In
+                </button>
+              </Link>
             </ul>
           </div>
           <img
@@ -112,14 +126,27 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLink}</ul>
         </div>
-        <div className="navbar-end">
-          <Link to="/login">
-            <a className="btn mr-5 bg-btn text-white font-bold hidden lg:flex">Log In</a>
-          </Link>
-          <Link to="/registration">
-            <a className="btn bg-btn text-white font-bold">Registration</a>
-          </Link>
+        {loader ? (
+          <span className="loading loading-infinity loading-lg"></span>
+        ) : (
+          !user ? (
+            <div className="navbar-end">
+              <Link to="/login">
+                <button className="btn mr-5 bg-btn text-white font-bold hidden lg:flex">
+                  Log In
+                </button>
+              </Link>
+              <Link to="/registration">
+                <button className="btn bg-btn text-white font-bold">
+                  Registration
+                </button>
+              </Link>
+            </div>
+          ): <div className="navbar-end">
+          <button onClick={handleLogout} className="btn bg-btn text-white font-bold">Log Out</button>
         </div>
+        )}
+        
       </div>
     </div>
   );

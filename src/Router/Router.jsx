@@ -4,6 +4,8 @@ import Home from "../Pages/Home";
 import AddCraft from "../Pages/AddCraft";
 import MyCraftList from "../Pages/MyCraftList";
 import AllCraft from "../Pages/AllCraft";
+import Login from "../Pages/Login";
+import Registration from "../Pages/Registration";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
         path: "/addcraft",
         element: <AddCraft></AddCraft>,
       },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path:"/registration",
+        element: <Registration></Registration>
+      }
     ],
   },
 ]);
