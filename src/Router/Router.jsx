@@ -6,6 +6,8 @@ import MyCraftList from "../Pages/MyCraftList";
 import AllCraft from "../Pages/AllCraft";
 import Login from "../Pages/Login";
 import Registration from "../Pages/Registration";
+import CraftDetails from "../Pages/CraftDetails";
+
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch("http://localhost:500/addItem"),
       },
       {
         path: "/allcraft",
@@ -30,11 +33,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login></Login>
+        element: <Login></Login>,
       },
       {
-        path:"/registration",
-        element: <Registration></Registration>
+        path: "/registration",
+        element: <Registration></Registration>,
+      },
+      {
+        path: '/craftdetails/:_id',
+        element: <CraftDetails></CraftDetails>,
+        loader: () => fetch("http://localhost:500/addItem")
       }
     ],
   },
