@@ -15,11 +15,11 @@ const CraftDetail = ({ craft }) => {
   } = craft;
   return (
     <div>
-      <div className="card lg:card-side bg-base-100 shadow-xl">
-        <figure>
-          <img className="" src={imageURl} alt="Album" />
+      <div className="grid grid-cols-4 bg-base-100 shadow-xl">
+        <figure className="col-span-4 md:col-span-2">
+          <img className="w-full" src={imageURl} alt="Album" />
         </figure>
-        <div className="card-body">
+        <div className="card-body col-span-4 md:col-span-2">
           <h2 className=" text-3xl font-bold text-primary">{item_name}</h2>
           <p className="text-gray-500 font-medium md:text-xl">
             <span className=" text-btn">Description</span> :{description}

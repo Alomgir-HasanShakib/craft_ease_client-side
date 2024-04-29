@@ -7,8 +7,6 @@ const CraftDetails = () => {
   const { _id } = useParams();
 
   const craftItem = crafts.find((craft) => craft._id === _id);
-
-  console.log(craftItem);
   const craftitems = [craftItem];
   return (
     <div>
