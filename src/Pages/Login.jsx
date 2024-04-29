@@ -16,8 +16,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   // context for authentication
-  const context = useContext(AuthContext);
-  console.log(context);
+  const { loginUser } = useContext(AuthContext);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -30,9 +29,9 @@ const Login = () => {
     if (/^(?=.*[a-z])(?=.*[A-Z]).+$/.test(password)) {
       return loginUser(email, password)
         .then((result) => {
-          result.user.displayName = username;
+          
           toast.success("Successfully Login!");
-          navigate(location?.state ? location.state : "/");
+          navigate(location?.state ? location?.state : "/");
         })
         .catch((error) => {
           toast.error("Login Error!");
@@ -42,14 +41,14 @@ const Login = () => {
         "Password should have atleast one uppercase and lowercase character"
       );
     }
-    loginUser(email, password)
-      .then((result) => {
-        toast.success("Successfully Login!");
+    // loginUser(email, password)
+    //   .then((result) => {
+    //     toast.success("Successfully Login!");
 
-        // navigate after login
-        navigate(location?.state ? location.state : "/");
-      })
-      .catch((err) => toast.error("Login Error"));
+    //     // navigate after login
+    //     navigate(location?.state ? location.state : "/");
+    //   })
+    //   .catch((err) => toast.error("Login Error"));
   };
 
   return (

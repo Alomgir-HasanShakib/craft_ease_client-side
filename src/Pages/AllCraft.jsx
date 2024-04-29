@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import Table from "../Components/Table/Table";
+import { Helmet } from "react-helmet";
 
 const AllCraft = () => {
   const crafts = useLoaderData();

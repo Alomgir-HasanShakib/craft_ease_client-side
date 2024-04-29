@@ -1,5 +1,6 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import CraftDetail from "../Components/craftDetail/CraftDetail";
+import { Helmet } from "react-helmet";
 
 const CraftDetails = () => {
   const crafts = useLoaderData();

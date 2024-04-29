@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../Context/Authentication/Authentication";
 
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AddCraft = () => {
   const [category, setCategory] = useState("");
   const [customize, setCustomize] = useState("");
+  const [stock, setStock] = useState("");
 
   // collect category name
   const handleCategory = (e) => {
@@ -18,6 +20,11 @@ const AddCraft = () => {
   const handleCustomize = (e) => {
     const isCustomizable = e.target.value;
     setCustomize(isCustomizable);
+  };
+  // handle stock value
+  const handleStock = (e) => {
+    const stocked = e.target.value;
+    setStock(stocked);
   };
 
   // handle item adding function
@@ -44,6 +51,7 @@ const AddCraft = () => {
       item_name,
       imageURl,
       category,
+      stock,
       customize,
     };
 
@@ -158,6 +166,7 @@ const AddCraft = () => {
           <select
             className="select select-bordered  bg-primary text-white col-span-4 md:col-span-2 placeholder:text-gray-300"
             name="stockStatus"
+            onChange={handleStock}
           >
             <option disabled selected>
               stockStatus

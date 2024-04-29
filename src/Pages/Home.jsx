@@ -12,9 +12,9 @@ const Home = () => {
       </Helmet>
       <Banner></Banner>
       <div>
-        <h2 className="md:text-6xl text-primary font-bold mb-10 uppercase underline text-2xl text-center md:text-left">Craft and Art</h2>
+        <h2 className="md:text-6xl text-primary font-bold mb-24 uppercase underline text-2xl text-center md:text-left">Craft and Art</h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 px-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 px-3 ">
         {
           crafts.map(craft => <CraftItem key={craft._id} craft={craft}></CraftItem>)
         }

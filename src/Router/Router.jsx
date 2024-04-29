@@ -26,11 +26,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/mycraftlist",
-        element: <MyCraftList></MyCraftList>,
+        element: (
+          <PrivateRoute>
+            <MyCraftList></MyCraftList>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("http://localhost:500/addItem"),
       },
       {
         path: "/addcraft",
-        element: <AddCraft></AddCraft>,
+        element: (
+          <PrivateRoute>
+            <AddCraft></AddCraft>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
