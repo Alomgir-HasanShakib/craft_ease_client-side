@@ -7,7 +7,7 @@ import AllCraft from "../Pages/AllCraft";
 import Login from "../Pages/Login";
 import Registration from "../Pages/Registration";
 import CraftDetails from "../Pages/CraftDetails";
-
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -40,10 +40,14 @@ const router = createBrowserRouter([
         element: <Registration></Registration>,
       },
       {
-        path: '/craftdetails/:_id',
-        element: <CraftDetails></CraftDetails>,
-        loader: () => fetch("http://localhost:500/addItem")
-      }
+        path: "/craftdetails/:_id",
+        element: (
+          <PrivateRoute>
+            <CraftDetails></CraftDetails>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("http://localhost:500/addItem"),
+      },
     ],
   },
 ]);

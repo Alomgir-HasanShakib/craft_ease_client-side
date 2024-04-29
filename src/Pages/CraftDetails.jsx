@@ -1,4 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import CraftDetail from "../Components/craftDetail/CraftDetail";
 
 const CraftDetails = () => {
   const crafts = useLoaderData();
@@ -10,6 +11,11 @@ const CraftDetails = () => {
   return <div>
       <div>
             <h2 className="text-6xl font-extrabold text-secondary uppercase mt-16 divider divider-start">Craft details</h2>
+            <div>
+              {
+                craftItem.map(craft => <CraftDetail key={craft._id} craft={craft}></CraftDetail>)
+              }
+            </div>
       </div>
   </div>;
 };
