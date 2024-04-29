@@ -11,6 +11,9 @@ const CraftDetails = () => {
   const craftitems = [craftItem];
   return (
     <div>
+      <Helmet>
+        <title>Craft Details</title>
+      </Helmet>
       <div className="px-3">
         <h2 className=" text-xl md:text-6xl font-extrabold text-secondary uppercase mt-16 divider divider-start">
           Craft details

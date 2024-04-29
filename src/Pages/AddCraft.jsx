@@ -82,6 +82,9 @@ const AddCraft = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Add Craft</title>
+      </Helmet>
       <form
         className='bg-[url("https://i.postimg.cc/c1TnTbR5/wave-haikei.png")] bg-cover bg-center rounded-lg '
         onSubmit={handleAddItem}

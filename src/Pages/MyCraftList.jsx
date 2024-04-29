@@ -1,9 +1,12 @@
-
-
 const MyCraftList = () => {
   return (
-    <div>MyCraftList</div>
-  )
-}
+    <div>
+      <Helmet>
+        <title>MyCraftList</title>
+      </Helmet>
+      MyCraftList
+    </div>
+  );
+};
 
-export default MyCraftList
+export default MyCraftList;
