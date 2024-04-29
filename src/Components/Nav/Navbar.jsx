@@ -45,7 +45,7 @@ const Navbar = () => {
       </li>
 
       {user && (
-        <ul className="flex">
+        <ul className="flex flex-col lg:flex-row">
           <li className="text-[18px] font-semibold">
             <NavLink
               to="/addcraft"
