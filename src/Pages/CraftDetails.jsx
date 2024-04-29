@@ -8,16 +8,21 @@ const CraftDetails = () => {
   const craftItem = crafts.find((craft) => craft._id === _id);
 
   console.log(craftItem);
-  return <div>
-      <div>
-            <h2 className="text-6xl font-extrabold text-secondary uppercase mt-16 divider divider-start">Craft details</h2>
-            <div>
-              {
-                craftItem.map(craft => <CraftDetail key={craft._id} craft={craft}></CraftDetail>)
+  const craftitems = [craftItem];
+  return (
+    <div>
+      <div className="px-3">
+        <h2 className=" text-xl md:text-6xl font-extrabold text-secondary uppercase mt-16 divider divider-start">
+          Craft details
+        </h2>
+        <div className="mt-16">
+          {
+                craftitems.map(craft => <CraftDetail key={craft._id} craft={craft}></CraftDetail>)
               }
-            </div>
+        </div>
       </div>
-  </div>;
+    </div>
+  );
 };
 
 export default CraftDetails;
