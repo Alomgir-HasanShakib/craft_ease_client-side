@@ -1,8 +1,9 @@
-# React + Vite
+# Craft Ease
+## The Features of this website is
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User can sign in and signup
+- User can Add Art and Craft data
+- User can Remove Art and Craft data
+- User can Update Art and Craft data
+- User can See his/her Art and Craft data that he/she added
+- User can Filter his/her Art and Craft data that he/she added by Customizable drop down
