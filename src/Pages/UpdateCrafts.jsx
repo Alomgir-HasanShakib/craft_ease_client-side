@@ -73,7 +73,7 @@ const UpdateCrafts = () => {
 
     // send data to the database
 
-    fetch(`http://localhost:500/addItem/${_id}`, {
+    fetch(`https://back-end-amber-gamma.vercel.app/addItem/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

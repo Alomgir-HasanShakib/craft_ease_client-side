@@ -20,12 +20,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:500/addItem"),
+        loader: () => fetch("https://back-end-amber-gamma.vercel.app/addItem"),
       },
       {
         path: "/allcraft",
         element: <AllCraft></AllCraft>,
-        loader: () => fetch("http://localhost:500/addItem"),
+        loader: () => fetch("https://back-end-amber-gamma.vercel.app/addItem"),
       },
       {
         path: "/mycraftlist",
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
             <MyCraftList></MyCraftList>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:500/addItem"),
+        loader: () => fetch("https://back-end-amber-gamma.vercel.app/addItem"),
       },
       {
         path: "/addcraft",
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
             <CraftDetails></CraftDetails>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:500/addItem"),
+        loader: () => fetch("https://back-end-amber-gamma.vercel.app/addItem"),
       },
       {
         path: "/updatecraft/:id",
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:500/addItem/${params.id}`),
+          fetch(`https://back-end-amber-gamma.vercel.app/addItem/${params.id}`),
       },
     ],
   },

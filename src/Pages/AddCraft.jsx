@@ -61,7 +61,7 @@ const AddCraft = () => {
 
     // send data to the database
 
-    fetch("http://localhost:500/addItem", {
+    fetch("https://back-end-amber-gamma.vercel.app/addItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
