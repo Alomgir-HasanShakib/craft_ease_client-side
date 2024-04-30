@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import Banner from "../Components/Banner/Banner";
 import { useLoaderData } from "react-router-dom";
 import CraftItem from "../Components/CraftItems/CraftItem";
+import Subscrive from "../Components/Subscribe/Subscrive";
 
 const Home = () => {
   const crafts = useLoaderData()
@@ -18,6 +19,9 @@ const Home = () => {
         {
           crafts.map(craft => <CraftItem key={craft._id} craft={craft}></CraftItem>)
         }
+      </div>
+      <div className="px-3">
+      <Subscrive ></Subscrive>
       </div>
     </div>
   );

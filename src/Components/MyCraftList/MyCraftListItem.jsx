@@ -1,7 +1,7 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
+import { Tooltip } from "react-tooltip";
 const MyCraftListItem = ({ craft, craftItems, setCraftItems }) => {
   const {
     _id,
@@ -77,11 +77,15 @@ const MyCraftListItem = ({ craft, craftItems, setCraftItems }) => {
             </p>
             <p className="text-gray-400 font-bold">Category : {category}</p>
             <div className="flex justify-around pt-5">
-              <Link to={`/updatecraft/${_id}`}>
+              <Link to={`/updatecraft/${_id}`} id="my-anchor-element">
                 <button className="btn bg-primary font-extrabold text-white ">
                   Update
                 </button>
               </Link>
+              <Tooltip
+                anchorSelect="#my-anchor-element"
+                content="Click To Redirect Update Page!"
+              />
               <button
                 className="btn bg-red-500
                font-extrabold text-white "
