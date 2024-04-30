@@ -12,6 +12,7 @@ const MyCraftListItem = ({ craft }) => {
     customize,
     processingTime,
     stock,
+    category
   } = craft;
 
   const handleDelete = (_id) => {
@@ -68,6 +69,9 @@ const MyCraftListItem = ({ craft }) => {
             <p className="text-gray-400 font-bold">Stock status : {stock}</p>
             <p className="text-gray-400 font-bold">
               Processing Time : {processingTime}
+            </p>
+            <p className="text-gray-400 font-bold">
+              Category : {category}
             </p>
             <div className="flex justify-around pt-5">
               <Link to={`/updatecraft/${_id}`}>
