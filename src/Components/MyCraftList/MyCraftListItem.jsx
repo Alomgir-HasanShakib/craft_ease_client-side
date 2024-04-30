@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const MyCraftListItem = ({ craft }) => {
+const MyCraftListItem = ({ craft, craftItems, setCraftItems }) => {
   const {
     _id,
     imageURl,
@@ -12,7 +12,7 @@ const MyCraftListItem = ({ craft }) => {
     customize,
     processingTime,
     stock,
-    category
+    category,
   } = craft;
 
   const handleDelete = (_id) => {
@@ -45,6 +45,11 @@ const MyCraftListItem = ({ craft }) => {
                 text: "Your file has been deleted.",
                 icon: "success",
               });
+
+              const remainigCraft = craftItems.filter(
+                (craft) => craft._id !== _id
+              );
+              setCraftItems(remainigCraft);
             }
           });
       }
@@ -56,8 +61,8 @@ const MyCraftListItem = ({ craft }) => {
       {" "}
       <div>
         <div className="card max-w-96 h-[479px] shadow-xl">
-          <figure>
-            <img src={imageURl} alt="User" />
+          <figure className="">
+            <img className="" src={imageURl} alt="User" />
           </figure>
           <div className="card-body">
             <h2 className="text-2xl font-bold text-primary">{item_name}</h2>
@@ -70,9 +75,7 @@ const MyCraftListItem = ({ craft }) => {
             <p className="text-gray-400 font-bold">
               Processing Time : {processingTime}
             </p>
-            <p className="text-gray-400 font-bold">
-              Category : {category}
-            </p>
+            <p className="text-gray-400 font-bold">Category : {category}</p>
             <div className="flex justify-around pt-5">
               <Link to={`/updatecraft/${_id}`}>
                 <button className="btn bg-primary font-extrabold text-white ">

@@ -3,6 +3,7 @@ import { AuthContext } from "../Context/Authentication/Authentication";
 
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AddCraft = () => {
   const [category, setCategory] = useState("");
@@ -26,6 +27,9 @@ const AddCraft = () => {
     const stocked = e.target.value;
     setStock(stocked);
   };
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // handle item adding function
   const handleAddItem = (e) => {
@@ -84,6 +88,7 @@ const AddCraft = () => {
               `,
             },
           });
+          navigate(location?.state ? location?.state : "/");
         }
       });
   };

@@ -3,27 +3,25 @@ import { AuthContext } from "../Context/Authentication/Authentication";
 
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
 const UpdateCrafts = () => {
-
-  const craft = useLoaderData()
+  const craft = useLoaderData();
   const {
     _id,
     imageURl,
     item_name,
     price,
     rating,
-    customize,
+
     processingTime,
-    stock,
-    category,
-    description
+
+    description,
   } = craft;
 
-  const [categorie, setCategory] = useState("");
-  const [customiz, setCustomize] = useState("");
-  const [stocks, setStock] = useState("");
+  const [category, setCategory] = useState("");
+  const [customize, setCustomize] = useState("");
+  const [stock, setStock] = useState("");
 
   // collect category name
   const handleCategory = (e) => {
@@ -43,6 +41,8 @@ const UpdateCrafts = () => {
     setStock(stocked);
   };
 
+  const location = useLocation();
+  const navigate = useNavigate();
   // handle item adding function
   const handleUpdateItem = (e) => {
     e.preventDefault();
@@ -66,9 +66,9 @@ const UpdateCrafts = () => {
       price,
       item_name,
       imageURl,
-      categorie,
-      stocks,
-      customiz,
+      category,
+      stock,
+      customize,
     };
 
     // send data to the database
@@ -82,7 +82,7 @@ const UpdateCrafts = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Craft Successfully Update ",
             showClass: {
@@ -100,130 +100,132 @@ const UpdateCrafts = () => {
               `,
             },
           });
+          navigate(location?.state ? location?.state : "/mycraftlist");
         }
       });
   };
   return (
     <div className="mt-24">
-      <h2 className=' text-xl md:text-6xl font-bold text-primary divider'>Update Craft</h2>
+      <h2 className=" text-xl md:text-6xl font-bold text-primary divider">
+        Update Craft
+      </h2>
       <div>
-      <div>
-      <Helmet>
-        <title>Update Craft</title>
-      </Helmet>
-      <form
-        className="border border-primary rounded-2xl mt-16"
-        onSubmit={handleUpdateItem}
-      >
-        <div className="w-full p-3 md:p-16 grid grid-cols-4 gap-5">
-          <input
-            type="text"
-            className="input input-bordered   bg-primary text-white col-span-4  md:col-span-2 placeholder:text-gray-300 "
-            placeholder="imageURl"
-            name="imageUrl"
-            defaultValue={imageURl}
-          />
-          <input
-            type="text"
-            className="input input-bordered   bg-primary text-white col-span-4 md:col-span-2 placeholder:text-gray-300 "
-            placeholder="item_name"
-            name="item_name"
-            defaultValue={item_name}
-          />
-
-          <select
-            className="select select-bordered  bg-primary text-white col-span-4 md:col-span-2 placeholder:text-gray-300 "
-            name="categoryName"
-            onChange={handleCategory}
+        <div>
+          <Helmet>
+            <title>Update Craft</title>
+          </Helmet>
+          <form
+            className="border border-primary rounded-2xl mt-16"
+            onSubmit={handleUpdateItem}
           >
-            <option  selected >
-              {category}
-            </option>
-            <option>Glass Dying & Staining</option>
-            <option>Lampworking</option>
-            <option>Glass Painting</option>
-            <option>Paper Quilling & origami</option>
-            <option>Scrapbooking</option>
-            <option> Card Making</option>
-          </select>
-          <textarea
-            type="text"
-            className="input  bg-primary text-white  placeholder:text-gray-300 col-span-4 md:col-span-2"
-            placeholder="short description"
-            name="description"
+            <div className="w-full p-3 md:p-16 grid grid-cols-4 gap-5">
+              <input
+                type="text"
+                className="input input-bordered   bg-primary text-white col-span-4  md:col-span-2 placeholder:text-gray-300 "
+                placeholder="imageURl"
+                name="imageUrl"
+                defaultValue={imageURl}
+              />
+              <input
+                type="text"
+                className="input input-bordered   bg-primary text-white col-span-4 md:col-span-2 placeholder:text-gray-300 "
+                placeholder="item_name"
+                name="item_name"
+                defaultValue={item_name}
+              />
 
-            defaultValue={description}
-          ></textarea>
+              <select
+                className="select select-bordered  bg-primary text-white col-span-4 md:col-span-2 placeholder:text-gray-300 "
+                name="categoryName"
+                onChange={handleCategory}
+              >
+                <option disabled selected>
+                  {craft.category}
+                </option>
+                <option>Glass Dying & Staining</option>
+                <option>Lampworking</option>
+                <option>Glass Painting</option>
+                <option>Paper Quilling & origami</option>
+                <option>Scrapbooking</option>
+                <option> Card Making</option>
+              </select>
+              <textarea
+                type="text"
+                className="input  bg-primary text-white  placeholder:text-gray-300 col-span-4 md:col-span-2"
+                placeholder="short description"
+                name="description"
+                defaultValue={description}
+              ></textarea>
 
-          <input
-            type="text"
-            className="input  bg-primary text-white  placeholder:text-gray-300  col-span-4 md:col-span-2"
-            placeholder="price"
-            name="price"
-            defaultValue={price}
-          />
+              <input
+                type="text"
+                className="input  bg-primary text-white  placeholder:text-gray-300  col-span-4 md:col-span-2"
+                placeholder="price"
+                name="price"
+                defaultValue={price}
+              />
 
-          <input
-            type="text"
-            className="input  bg-primary text-white  placeholder:text-gray-300  col-span-4 md:col-span-2"
-            placeholder="rating"
-            name="rating"
-            defaultValue={rating}
-          />
-          <select
-            className="select select-bordered  bg-primary text-white col-span-4 md:col-span-2 placeholder:text-gray-300 "
-            name="customization"
-            onChange={handleCustomize}
-          >
-            <option  selected>
-              {customize}
-            </option>
-            <option>Yes</option>
-            <option>NO</option>
-          </select>
-          <input
-            type="text"
-            className="input  bg-primary text-white  placeholder:text-gray-300  col-span-4 md:col-span-2"
-            placeholder="processing_time"
-            name="processing_time"
-            defaultValue={processingTime}
-          />
-          <select
-            className="select select-bordered  bg-primary text-white col-span-4 md:col-span-2 placeholder:text-gray-300"
-            name="stockStatus"
-            onChange={handleStock}
-          >
-            <option  selected>
-              {stock}
-            </option>
-            <option>In stock</option>
-            <option> Made to Order</option>
-          </select>
-          <input
-            type="text"
-            className="input  bg-primary text-white  placeholder:text-gray-300  col-span-4 md:col-span-2"
-            placeholder="User Email"
-            name="email"
-            value={user?.email}
-          />
-          <input
-            type="text"
-            className="input bg-primary placeholder:text-gray-300 text-white  col-span-4 md:col-span-2 "
-            placeholder="User name"
-            value={user?.displayName}
-            name="userName"
-          />
-          <input
-            type="submit"
-            value="Update"
-            className="btn bg-btn  text-white  font-bold col-span-4 "
-          />
+              <input
+                type="text"
+                className="input  bg-primary text-white  placeholder:text-gray-300  col-span-4 md:col-span-2"
+                placeholder="rating"
+                name="rating"
+                defaultValue={rating}
+              />
+              <select
+                className="select select-bordered  bg-primary text-white col-span-4 md:col-span-2 placeholder:text-gray-300 "
+                name="customization"
+                onChange={handleCustomize}
+              >
+                <option disabled selected>
+                  {craft.customize}
+                </option>
+                <option>Yes</option>
+                <option>NO</option>
+              </select>
+              <input
+                type="text"
+                className="input  bg-primary text-white  placeholder:text-gray-300  col-span-4 md:col-span-2"
+                placeholder="processing_time"
+                name="processing_time"
+                defaultValue={processingTime}
+              />
+              <select
+                className="select select-bordered  bg-primary text-white col-span-4 md:col-span-2 placeholder:text-gray-300"
+                name="stockStatus"
+                onChange={handleStock}
+              >
+                <option disabled selected>
+                  {craft.stock}
+                </option>
+                <option>In stock</option>
+                <option> Made to Order</option>
+              </select>
+              <input
+                type="text"
+                className="input  bg-primary text-white  placeholder:text-gray-300  col-span-4 md:col-span-2"
+                placeholder="User Email"
+                name="email"
+                value={user?.email}
+              />
+              <input
+                type="text"
+                className="input bg-primary placeholder:text-gray-300 text-white  col-span-4 md:col-span-2 "
+                placeholder="User name"
+                value={user?.displayName}
+                name="userName"
+              />
+              <input
+                type="submit"
+                value="Update"
+                className="btn bg-btn  text-white  font-bold col-span-4 "
+              />
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default UpdateCrafts
+export default UpdateCrafts;
