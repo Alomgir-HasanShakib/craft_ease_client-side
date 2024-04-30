@@ -9,11 +9,13 @@ import Registration from "../Pages/Registration";
 import CraftDetails from "../Pages/CraftDetails";
 import PrivateRoute from "./PrivateRoute";
 import UpdateCrafts from "../Pages/UpdateCrafts";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
