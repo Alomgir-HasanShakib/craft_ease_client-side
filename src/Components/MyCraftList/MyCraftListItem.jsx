@@ -69,8 +69,8 @@ const MyCraftListItem = ({ craft }) => {
             <p className="text-gray-400 font-bold">
               Processing Time : {processingTime}
             </p>
-            <div className="flex justify-around pt-5`">
-              <Link to={`/craftdetails/${_id}`}>
+            <div className="flex justify-around pt-5">
+              <Link to={`/updatecraft/${_id}`}>
                 <button className="btn bg-primary font-extrabold text-white ">
                   Update
                 </button>
