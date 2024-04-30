@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Context/Authentication/Authentication";
 import toast, { Toaster } from "react-hot-toast";
@@ -86,7 +86,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100 ">
+      <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -147,8 +147,11 @@ const Navbar = () => {
         {user && (
           <div className="navbar-end">
             <div className="avatar">
-              <button className="w-10 mr-2 tooltip rounded-full ring ring-primary ring-offset-base-100 ring-offset-2" data-tip={user.displayName}>
-                <img className="rounded-full ring" src={user.photoURL}  />
+              <button
+                className="w-10 mr-2 tooltip rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
+                data-tip={user.displayName}
+              >
+                <img className="rounded-full ring" src={user.photoURL} />
               </button>
             </div>
             <button

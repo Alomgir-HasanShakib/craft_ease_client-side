@@ -25,7 +25,7 @@ const MyCraftList = () => {
 
       <div className="mt-16 flex justify-center">
         <details className="dropdown">
-          <summary className="m-1 btn bg-btn text-white">Customizeable</summary>
+          <summary className="m-1 btn bg-btn text-white">Customizable</summary>
           <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
             <li>
               <a onClick={() => setFilterCraft("All")}>All</a>

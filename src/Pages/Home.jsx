@@ -3,6 +3,7 @@ import Banner from "../Components/Banner/Banner";
 import { useLoaderData } from "react-router-dom";
 import CraftItem from "../Components/CraftItems/CraftItem";
 import Subscrive from "../Components/Subscribe/Subscrive";
+import Faq from "../Components/FAQ/Faq";
 
 const Home = () => {
   const crafts = useLoaderData()
@@ -22,6 +23,9 @@ const Home = () => {
       </div>
       <div className="px-3">
       <Subscrive ></Subscrive>
+      </div>
+      <div className="mt-24 px-3">
+        <Faq></Faq>
       </div>
     </div>
   );
