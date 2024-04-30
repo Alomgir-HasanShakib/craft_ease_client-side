@@ -1,14 +1,22 @@
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
-      <nav className="grid grid-flow-col gap-4">
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
-      </nav>
+    <footer className="footer footer-center p-10 bg-primary text-primary-content">
+      <aside>
+        <img
+          className="w-24 md:w-56"
+          src="https://i.postimg.cc/nLg7k5Zw/logo.png"
+          alt=""
+        />
+        <p className="font-bold">
+          Craft Ease <br />
+          Providing reliable tech since 1992 <br />
+         <span className="text-white mr-3"> Phone: 0123456789 </span>
+        <span className="text-white">  Email : craftease@info.com</span>
+        </p>
+        <p>Copyright © 2024 - All right reserved By Craft Ease</p>
+      </aside>
       <nav>
-        <div className="grid grid-flow-col gap-4">
+        <div className="grid grid-flow-col gap-4 cursor-pointer">
           <a>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -44,9 +52,6 @@ const Footer = () => {
           </a>
         </div>
       </nav>
-      <aside>
-        <p>Copyright © 2024 - All right reserved by ACME Industries Ltd</p>
-      </aside>
     </footer>
   );
 };
