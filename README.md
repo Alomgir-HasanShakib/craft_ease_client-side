@@ -10,3 +10,10 @@
 - **Community Engagement**: Interact with other artists and craft lovers, share feedback, and inspire each other.
 
 ### Whether you're an experienced artist or a budding crafter, our platform is designed to support and celebrate your creativity. Join us today and be part of a dynamic community where art and craft come to life!
+
+### If you want to run this project locally so you need to follow those step.
+- clone this project then open your code editor and then type this line in your terminal
+  ```node
+  git clone git@github.com:Alomgir-HasanShakib/craft_ease_client-side.git
+  npm install
+  npm run dev
